@@ -1,5 +1,5 @@
-// Spezezy service worker. To release an update: change V (spezezy-v6 -> spezezy-v7).
-const V='spezezy-v6',FONTS='spezezy-fonts',CORE=['./','index.html','srv.js','manifest.webmanifest','icon-192.png','icon-512.png'];
+// Spezezy service worker. To release an update: change V (spezezy-v7 -> spezezy-v8).
+const V='spezezy-v7',FONTS='spezezy-fonts',CORE=['./','index.html','srv.js','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V&&x!==FONTS).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
